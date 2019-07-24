@@ -10,6 +10,26 @@
 
   <body>
     <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <a class="navbar-brand" href="#">
+              <li><%= link_to 'Links', links_path %></li>
+            </a>
+          </ul>
+          <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+            <a class="navbar-brand" href="#">
+              <li><%= current_user.username %></li>
+            </a>
+            <a class="navbar-brand" href="#">
+                <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+              </a>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>

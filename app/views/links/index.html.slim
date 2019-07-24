@@ -12,7 +12,7 @@ table.table
     - @links.each do |link|
       tr
         td = link.full_url
-        td = link.tags.map { |t| t.name }
+        td = tags(link.tags)
         td = link_to 'Show', link
         td = link_to 'Destroy', link, data: { confirm: 'Are you sure?' }, method: :delete
 
