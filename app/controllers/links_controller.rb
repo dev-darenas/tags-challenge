@@ -18,10 +18,6 @@ class LinksController < ApplicationController
     load_tags
   end
 
-  # GET /links/1/edit
-  def edit
-  end
-
   # POST /links
   def create
     @link = current_user.links.new(link_params)
@@ -31,15 +27,6 @@ class LinksController < ApplicationController
       redirect_to @link, notice: 'Link was successfully created.'
     else
       render :new
-    end
-  end
-
-  # PATCH/PUT /links/1
-  def update
-    if @link.update(link_params)
-      redirect_to @link, notice: 'Link was successfully updated.'
-    else
-      render :edit
     end
   end
 

@@ -7,7 +7,6 @@ table.table
       th Tags
       th
       th
-      th
 
   tbody
     - @links.each do |link|
@@ -15,9 +14,8 @@ table.table
         td = link.full_url
         td = link.tags.map { |t| t.name }
         td = link_to 'Show', link
-        td = link_to 'Edit', edit_link_path(link)
         td = link_to 'Destroy', link, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Link', new_link_links_path
+= link_to 'New Link', new_link_links_path, class: 'btn btn-primary'
