@@ -1,0 +1,21 @@
+= form_for @link do |f|
+  - if @link.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@link.errors.count, "error")} prohibited this link from being saved:"
+      ul
+        - @link.errors.full_messages.each do |message|
+          li = message
+
+  h3 = @link.full_url
+
+  = f.hidden_field :url
+  = f.hidden_field :full_url
+
+  .field
+    = select  :url,
+              :tags,
+              options_for_select(@tags.map { |tag| [tag.name, tag.id] }),
+              { },
+              { class: 'form-control form-select', multiple: 'multiple' }
+
+  .actions = f.submit
