@@ -12,9 +12,10 @@
   = f.hidden_field :full_url
 
   .field
+    = f.label 'tags'
     = select  :url,
               :tags,
-              options_for_select(@tags.map { |tag| [tag.name, tag.id] }),
+              options_for_select(@tags_selects),
               { },
               { class: 'form-control form-select', multiple: 'multiple' }
 

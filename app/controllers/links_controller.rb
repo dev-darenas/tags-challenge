@@ -57,6 +57,6 @@ class LinksController < ApplicationController
     end
 
     def load_tags
-      @tags = Link.find_by(url: @link.url)&.tags || []
+      @tags_selects = load_tags_suggested(@link.url)
     end
 end

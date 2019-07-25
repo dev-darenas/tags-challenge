@@ -9,6 +9,9 @@ class Link < ApplicationRecord
   before_save :set_url
   
   def set_url
-    self.url = full_url.match(/^(http|https)?:?(\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)/)[0] if full_url
+    if full_url
+      uri = Addressable::URI.parse(full_url)
+      self.url = uri&.host || '' + uri&.path || ''
+    end
   end
 end
